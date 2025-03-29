@@ -3,7 +3,7 @@ notion = Client(auth="API_KEY")
 page_id = "557885410ce143b0a5305ed6cd46572e"
 page_content = notion.blocks.children.list(page_id)
 def extract_text(blocks):
-    """Extracts plain text from Notion blocks""""
+    """Extracts plain text from Notion blocks"""
     try:
         if 'results' not in blocks:
             return ""
@@ -24,10 +24,11 @@ def summarize(text):
     text = extract_text(page_id)
     try:
         response = client.chat.completion.create(
-            model = 'whisper-large-v3',
+            model = 'llama-3.3-70b-versatile',
+            message = [
                     {"role": "system", "content": "You are a helpful quiz question generator."},
                 ]
-                return response.choices[0].message.content.strip()
+            return response.choices[0].message.content.strip()
         )
     except Exception as e:
         return f'error generating question {e}'
