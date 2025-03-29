@@ -11,7 +11,6 @@ def extract_text(blocks):
             t['plain_text']
             for block in blocks['results']
             if block.get('type') == 'paragraph' and 'text' in block['paragraph']
-            for t in block['paragraph'].get['text',[]]
         )
     except Exception as e:
         print(f"Error inside extract_text: {e}")
