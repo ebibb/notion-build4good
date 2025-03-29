@@ -15,5 +15,5 @@ def extract_text(blocks):
         )
     except Exception as e:
         print(f"Error inside extract_text: {e}")
-        return ""
+        return ''
 
