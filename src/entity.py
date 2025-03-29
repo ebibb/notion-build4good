@@ -28,7 +28,7 @@ def summarize(text):
             model = 'llama-3.3-70b-versatile',
             message = [
                     {"role": "system", "content": "You are a helpful quiz question generator."},
-                    {"role": "user", "content": f'Summarize this: {text}'},
+                    {"role": "user", "content": f'Summarize this text: {text}'},
                 ]
             return response.choices[0].message.content.strip()
         )
