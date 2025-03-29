@@ -11,7 +11,6 @@ def extract_text(blocks):
             t['plain_text']
             for block in blocks['results']
             if block.get('type') == 'paragraph' and 'text' in block['paragraph']
-            for t in block['paragraph'].get['text',[]]
         )
     except Exception as e:
         print(f"Error inside extract_text: {e}")
@@ -26,9 +25,7 @@ def summarize(text):
     try:
         response = client.chat.completion.create(
             model = 'whisper-large-v3',
-            message = [
                     {"role": "system", "content": "You are a helpful quiz question generator."},
-                    {"role": "user", "content": f'Summerize this: {text}'},
                 ]
                 return response.choices[0].message.content.strip()
         )
