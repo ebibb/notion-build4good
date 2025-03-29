@@ -8,13 +8,78 @@
     <meta name="description" content="Notion internal integration example" />
 
     <title>Notion integration demo</title>
-    <!-- import the webpage's stylesheet -->
+    import the webpage's stylesheet
     <link rel="stylesheet" href="/style.css" />
 
-    <!-- import the webpage's client-side javascript file -->
+    import the webpage's client-side javascript file
     <script src="/client.js" defer></script>
+
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+      }
+  
+      .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+  
+      input[type="text"] {
+        width: 80%;
+        max-width: 400px;
+        padding: 10px;
+        border: 2px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+      }
+  
+      input[type="submit"] {
+        background-color: #c2b6ff;
+        color: black;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+  
+      input[type="submit"]:hover {
+        background-color: #a99be8;
+      }
+    </style>
   </head>
   <body>
+
+    <div class="container">
+      <h1>Notion Notes Summarizer</h1>
+  
+      <div class="form-container">
+        <!-- Step 1 -->
+        <div class="form-group">
+          <label for="dbName">1. Enter your page ID (32 character code at the end of the URL)</label>
+          <input type="text" id="dbName" />
+        </div>
+  
+        <!-- Step 2 -->
+        <div class="form-group">
+          <label for="comment">2. Add a title for your summary</label>
+          <input type="text" id="comment" />
+        </div>
+  
+        <!-- Step 3 -->
+        <div class="form-group">
+          <label>3. Summarize your notes</label>
+          <input type="submit" value="Submit" />
+        </div>
+      </div>
+    </div>
+  
+  </body>
+  
+  <!-- <body>
     <header>
       <h1>Notion Notes Summarizer</h1>
     </header>
@@ -22,12 +87,10 @@
     <main>
       <h2>Goals</h2>
       <p>
-        Use this demo to see how to incorporate Notion's public API into your
-        app. Build on this demo as needed to meet your own app's requirements!
+        Use this website to save summaries of your notes to your Notion!
       </p>
       <p>
-        Open the Notion page set in your environment variables to see workspace
-        updates in real-time. :)
+        Enter your Notion page id to get started.
       </p>
       <table>
         <tr>
@@ -36,14 +99,14 @@
         </tr>
         <tr>
           <td>
-            <h3>1. Create a new database</h3>
+            <h3>1. Enter your page id</h3>
             <form id="databaseForm">
-              <label for="dbName">Database name</label>
+              <label for="dbName">32 character code at the end of the url</label>
               <input type="text" id="dbName" />
               <input type="submit" />
             </form>
           </td>
-          <!-- The database form response will be appended here after submitting it -->
+          The database form response will be appended here after submitting it
           <td id="dbResponse"></td>
         </tr>
         <tr>
@@ -59,7 +122,7 @@
               <input type="submit" />
             </form>
           </td>
-          <!-- The page form response will be appended here after submitting it -->
+          The page form response will be appended here after submitting it
           <td id="pageResponse"></td>
         </tr>
         <tr>
@@ -73,24 +136,38 @@
               <input type="submit" />
             </form>
           </td>
-          <!-- The page content/blocks form response will be appended here after submitting it -->
+          The page content/blocks form response will be appended here after submitting it
           <td id="blocksResponse"></td>
         </tr>
         <tr>
           <td>
-            <h3>4. Add a comment to the content</h3>
+            <h3>2. Add a title for your summary</h3>
             <form id="commentForm">
               <label for="pageIDComment">Page ID</label>
               <input type="text" id="pageIDComment" />
-              <label for="comment">Comment</label>
+              <label for="comment">Title</label>
               <input type="text" id="comment" />
               <input type="submit" />
             </form>
           </td>
-          <!-- The comment form response will be appended here after submitting it -->
+          The comment form response will be appended here after submitting it
           <td id="commentResponse"></td>
+        </tr>
+        <tr>
+          <td>
+            <h3>3. Summarize your notes</h3>
+            <form id="summarizeForm">
+              <label for="pageIDSummarize">Page ID</label>
+              <input type="text" id="pageIDSummarize" />
+              <input type="submit" />
+            </form>
+          </td>
+          The summarize form response will be appended here after submitting it
+          <td id="summarizeResponse"></td>
+          This form will summarize the notes on the page and return a summary to the user
+          The summarize endpoint will call the Notion API to summarize the content of the page and return a summary
         </tr>
       </table>
     </main>
-  </body>
+  </body> -->
 </html>
