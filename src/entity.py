@@ -16,7 +16,7 @@ def extract_text(blocks):
     except Exception as e:
         print(f"Error inside extract_text: {e}")
         return ""
-
+import os
 client = openai.OpenAI(
     base_url="https://api.groq.com/openai/v1",
     api_key=os.environ.get("GROQ_KEY")
