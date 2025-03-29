@@ -17,3 +17,20 @@ def extract_text(blocks):
         print(f"Error inside extract_text: {e}")
         return ''
 
+client = openai.OpenAI(
+    base_url="https://api.groq.com/openai/v1",
+    api_key=os.environ.get("GROQ_KEY")
+)
+def summarize(text):
+    text = extract_text(page_id)
+    try:
+        response = client.chat.completion.create(
+            model = 'whisper-large-v3',
+            message = [
+                    {"role": "system", "content": "You are a helpful quiz question generator."},
+                    {"role": "user", "content": f'Summerize this: {text}'},
+                ]
+                return response.choices[0].message.content.strip()
+        )
+    except Exception as e:
+        return f'error generating question {e}'
