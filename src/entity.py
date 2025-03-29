@@ -1,4 +1,6 @@
 from notion_client import Client
+import os
+import openai
 notion = Client(auth="API_KEY")
 page_id = "557885410ce143b0a5305ed6cd46572e"
 page_content = notion.blocks.children.list(page_id)
@@ -16,16 +18,13 @@ def extract_text(blocks):
     except Exception as e:
         print(f"Error inside extract_text: {e}")
         return ""
-import os
-import openai
 client = openai.OpenAI(
     base_url="https://api.groq.com/openai/v1",
     api_key=os.environ.get("GROQ_KEY")
 )
 def summarize(page_id):
     """Summarizes extracted text using OpenAI"""
-    page_content = notion.blocks.children.list(page_id) #Fetch Notion content
-    text = extract_text(page_id) #Extract text from Notion blocks
+    text = extract_text(page_content) #Extract text from Notion blocks
     if not text.strip():
         return "No text found to summarize."
     try:
@@ -39,3 +38,5 @@ def summarize(page_id):
         return response.choices[0].message.content.strip()
     except Exception as e:
         return f'error generating question {e}'
+summary = summarize(page_id) # Call the summarize function with the page_id
+print(summary) # Print the summary of the Notion page content
